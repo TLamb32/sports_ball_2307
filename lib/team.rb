@@ -15,6 +15,26 @@ class Team
 
   def add_player(player)
     @roster << player
+  end
 
+  def long_term_players
+    long_term = []
+    @roster.find_all do |roster|
+      if roster.contract_length >= 24
+        long_term << roster
+      end
+      # require 'pry'; binding.pry
+    end
+    long_term
+  end
+
+  def short_term_players
+    short_term = []
+    @roster.find_all do |roster|
+      if roster.contract_length <= 23
+        short_term << roster
+      end
+    end
+    short_term
   end
 end
