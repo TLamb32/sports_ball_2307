@@ -10,38 +10,41 @@ class Team
   end
 
   def player_count
-    @roster.count()
+    @roster.count
   end
 
-  def add_player(player)
-    @roster << player
+  def add_player(new_player)
+    @roster << new_player
   end
 
   def long_term_players
-    long_term = []
-    @roster.find_all do |roster|
-      if roster.contract_length >= 24
-        long_term << roster
+    @roster.find_all do |player|
+      player.contract_length > 24
       end
       # require 'pry'; binding.pry
-    end
-    long_term
+    # end
+    # long_term
   end
 
   def short_term_players
-    short_term = []
-    @roster.find_all do |roster|
-      if roster.contract_length <= 23
-        short_term << roster
-      end
+    @roster.find_all do |player|
+      player.contract_length <= 24
     end
-    short_term
   end
 
   def total_value
-    @roster.each do |roster|
-      roster.contract_length * roster.monthly_cost
+    # @roster.sum do |player|
+    #   player.monthly_cost * player.contract_length
+    # end
+    @roster.sum do |player|
+      player.total_cost
     end
-    # @roster.monthly_cost * @roster.contract_length
+  end
+
+  def details
+    {
+      "total_value" => total_value,
+      "player_count" => player_count
+    }
   end
 end

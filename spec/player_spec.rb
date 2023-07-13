@@ -43,6 +43,6 @@ RSpec.describe Player do
 
     expect(player.nickname).to eq(nil)
     player.set_nickname!("Squints")
-    player.nickname
+    expect(player.nickname).to eq("Squints")
   end
 end

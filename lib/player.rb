@@ -1,7 +1,8 @@
 class Player
   attr_reader :name,
               :monthly_cost,
-              :contract_length
+              :contract_length,
+              :nickname
 
   def initialize(name, monthly_cost, contract_length)
     @name = name
@@ -13,6 +14,7 @@ class Player
   def first_name
     @name.split.at(0)
     # require 'pry'; binding.pry
+    # @name.split[0] also works
   end
 
   def last_name
@@ -23,11 +25,13 @@ class Player
     @monthly_cost * @contract_length
   end
 
-  def nickname
-    @nickname
-  end
+  # def nickname
+  #   @nickname
+  # end
+
+  # NOT NEEDED ^^^
 
   def set_nickname!(nickname)
-    "Squints"
+    @nickname = nickname
   end
 end
