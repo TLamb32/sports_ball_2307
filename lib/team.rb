@@ -37,4 +37,11 @@ class Team
     end
     short_term
   end
+
+  def total_value
+    @roster.each do |roster|
+      roster.contract_length * roster.monthly_cost
+    end
+    # @roster.monthly_cost * @roster.contract_length
+  end
 end
